@@ -2,6 +2,7 @@ package nl.soccar.rmi.interfaces;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import nl.soccar.library.SessionData;
 
 /**
  * Interface that specifies the methods that make it possible for a Game server
@@ -10,10 +11,45 @@ import java.rmi.RemoteException;
  * @author PTS34A
  */
 public interface IMainServerForGameServer extends Remote {
-    
+
+    /**
+     * Notifies the Main server when a new game server is registered.
+     *
+     * @param gameServer The game server that is registered at the Main server.
+     * @throws RemoteException Thrown when a communication error occurs during
+     * the remote call of this method.
+     */
     void register(IGameServerForMainServer gameServer) throws RemoteException;
-    
+
+    /**
+     * Notifies the Main server when a game server is deregistered.
+     *
+     * @param gameServer The game server that is deregistered at the Main
+     * server.
+     * @throws RemoteException Thrown when a communication error occurs during
+     * the remote call of this method.
+     */
     void deregister(IGameServerForMainServer gameServer) throws RemoteException;
+
+    /**
+     * Notifies the Main server when new session is created on a Game server.
+     *
+     * @param gamsServer The game server on which the session is created.
+     * @param sessionData The data of the session that is created.
+     * @throws RemoteException Thrown when a communication error occurs during
+     * the remote call of this method.
+     */
+    void sessionCreated(IGameServerForMainServer gamsServer, SessionData sessionData) throws RemoteException;
+
+    /**
+     * Notifies the Main server when a session is terminated on a Game server.
+     *
+     * @param gameServer The game server on which the session is hosted.
+     * @param sessionData The data of the session that is terminated.
+     * @throws RemoteException Thrown when a communication error occurs during
+     * the remote call of this method.
+     */
+    void sessionDestroyed(IGameServerForMainServer gameServer, SessionData sessionData) throws RemoteException;
 
     /**
      * Adds a given amount of goals to the given player stored in the
