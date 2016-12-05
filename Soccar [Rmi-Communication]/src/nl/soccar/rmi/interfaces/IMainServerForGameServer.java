@@ -34,12 +34,12 @@ public interface IMainServerForGameServer extends Remote {
     /**
      * Notifies the Main server when new session is created on a Game server.
      *
-     * @param gamsServer The game server on which the session is created.
+     * @param gameServer The game server on which the session is created.
      * @param sessionData The data of the session that is created.
      * @throws RemoteException Thrown when a communication error occurs during
      * the remote call of this method.
      */
-    void sessionCreated(IGameServerForMainServer gamsServer, SessionData sessionData) throws RemoteException;
+    void sessionCreated(IGameServerForMainServer gameServer, SessionData sessionData) throws RemoteException;
 
     /**
      * Notifies the Main server when a session is terminated on a Game server.
@@ -50,6 +50,30 @@ public interface IMainServerForGameServer extends Remote {
      * the remote call of this method.
      */
     void sessionDestroyed(IGameServerForMainServer gameServer, SessionData sessionData) throws RemoteException;
+
+    /**
+     * Increases the occupancy of the given session on the Main server.
+     *
+     * @param gameServer The game server on which the session occupancy needs to
+     * be increased.
+     * @param sessionData The data of the session whose occupancy is being
+     * increased.
+     * @throws RemoteException Thrown when a communication error occurs during
+     * the remote call of this method.
+     */
+    void increaseSessionOccupancy(IGameServerForMainServer gameServer, SessionData sessionData) throws RemoteException;
+
+    /**
+     * Decreases the occupancy of the given session on the Main server.
+     *
+     * @param gameServer The game server on which the session occupancy needs to
+     * be decreased.
+     * @param sessionData The data of the session whose occupancy is being
+     * decreaed.
+     * @throws RemoteException Thrown when a communication error occurs during
+     * the remote call of this method.
+     */
+    void decreaseSessionOccupancy(IGameServerForMainServer gameServer, SessionData sessionData) throws RemoteException;
 
     /**
      * Adds a given amount of goals to the given player stored in the
