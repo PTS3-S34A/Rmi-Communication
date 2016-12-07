@@ -79,6 +79,7 @@ public interface IClientUnauthenticated extends Remote {
      *
      * @param name The roomname of the session that is being created.
      * @param password The password of the session that is being created.
+     * @param hostName The username of the player that created the session.
      * @param capacity The player capacity of the session that is being created.
      * @param duration The game duration of the session that is being created.
      * @param mapType The maptype of the session that is being created.
@@ -87,6 +88,6 @@ public interface IClientUnauthenticated extends Remote {
      * @throws RemoteException Thrown when a communication error occurs during
      * the remote call of this method.
      */
-    boolean createSession(String name, String password, int capacity, Duration duration, MapType mapType, BallType ballType) throws RemoteException;
+    boolean createSession(String name, String password, String hostName, int capacity, Duration duration, MapType mapType, BallType ballType) throws RemoteException;
 
 }
