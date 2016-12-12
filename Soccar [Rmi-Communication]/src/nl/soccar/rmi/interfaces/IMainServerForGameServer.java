@@ -52,28 +52,37 @@ public interface IMainServerForGameServer extends Remote {
     void sessionDestroyed(IGameServerForMainServer gameServer, String roomName) throws RemoteException;
 
     /**
+     * Notifies the Main server when the host plauer leaves the session.
+     *
+     * @param gameServer The game server on which the session is hosted.
+     * @param roomName The name of the room whose host player leaves.
+     * @param newHostName The name of the new host player.
+     * @throws RemoteException Thrown when a communication error occurs during
+     * the remote call of this method.
+     */
+    void hostChanged(IGameServerForMainServer gameServer, String roomName, String newHostName) throws RemoteException;
+
+    /**
      * Increases the occupancy of the given session on the Main server.
      *
      * @param gameServer The game server on which the session occupancy needs to
      * be increased.
-     * @param sessionData The data of the session whose occupancy is being
-     * increased.
+     * @param roomName The name of the room whose occupancy is being increased.
      * @throws RemoteException Thrown when a communication error occurs during
      * the remote call of this method.
      */
-    void increaseSessionOccupancy(IGameServerForMainServer gameServer, SessionData sessionData) throws RemoteException;
+    void increaseSessionOccupancy(IGameServerForMainServer gameServer, String roomName) throws RemoteException;
 
     /**
      * Decreases the occupancy of the given session on the Main server.
      *
      * @param gameServer The game server on which the session occupancy needs to
      * be decreased.
-     * @param sessionData The data of the session whose occupancy is being
-     * decreaed.
+     * @param roomName The name of the room whose occupancy is being decreased.
      * @throws RemoteException Thrown when a communication error occurs during
      * the remote call of this method.
      */
-    void decreaseSessionOccupancy(IGameServerForMainServer gameServer, SessionData sessionData) throws RemoteException;
+    void decreaseSessionOccupancy(IGameServerForMainServer gameServer, String roomName) throws RemoteException;
 
     /**
      * Adds a given amount of goals to the given player stored in the
