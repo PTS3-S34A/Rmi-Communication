@@ -45,11 +45,11 @@ public interface IMainServerForGameServer extends Remote {
      * Notifies the Main server when a session is terminated on a Game server.
      *
      * @param gameServer The game server on which the session is hosted.
-     * @param sessionData The data of the session that is terminated.
+     * @param roomName The name of the room that is terminated.
      * @throws RemoteException Thrown when a communication error occurs during
      * the remote call of this method.
      */
-    void sessionDestroyed(IGameServerForMainServer gameServer, SessionData sessionData) throws RemoteException;
+    void sessionDestroyed(IGameServerForMainServer gameServer, String roomName) throws RemoteException;
 
     /**
      * Increases the occupancy of the given session on the Main server.
