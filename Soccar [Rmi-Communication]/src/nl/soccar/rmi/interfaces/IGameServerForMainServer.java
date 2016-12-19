@@ -30,4 +30,14 @@ public interface IGameServerForMainServer extends Remote {
      */
     boolean createSession(String name, String password, String hostName, int capacity, Duration duration, MapType mapType, BallType ballType) throws RemoteException;
 
+    
+    /**
+     * Gets the amount of free memory in the Java Virtual Machine.
+     * 
+     * @return The amount free memory measured in bytes.
+     * @throws RemoteException Thrown when a communication error occurs during
+     * the remote call of this method.
+     */
+    int getAvailableMemory() throws RemoteException;
+    
 }
