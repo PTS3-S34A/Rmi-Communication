@@ -21,6 +21,11 @@ public class RmiConstants {
     public static final int PORT_NUMBER_GAME_SERVER = 1045;
 
     /**
+     * Ping calculation factor constant.
+     */
+    public static final int PING_CALCULATION_FACTOR = 5762;
+
+    /**
      * Constructor that is intentionally marked private so a RmiConstants object
      * can never be initiated outside this class.
      */
