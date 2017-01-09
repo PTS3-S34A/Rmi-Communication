@@ -3,6 +3,7 @@ package nl.soccar.rmi.interfaces;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import nl.soccar.library.SessionData;
+import nl.soccar.library.enumeration.Privilege;
 
 /**
  * Interface that specifies the methods that make it possible for a Game server
@@ -140,5 +141,17 @@ public interface IMainServerForGameServer extends Remote {
      * the remote call of this method.
      */
     void incrementGamesPlayed(String username) throws RemoteException;
+
+    /**
+     * Retrieves the privilege of the user with the given username from the
+     * persistency service.
+     *
+     * @param username The username of the user whose privilege is being
+     * retrieved.
+     * @return The privilege of the given user.
+     * @throws RemoteException Thrown when a communication error occurs during
+     * the remote call of this method.
+     */
+    Privilege getPrivilege(String username) throws RemoteException;
 
 }
